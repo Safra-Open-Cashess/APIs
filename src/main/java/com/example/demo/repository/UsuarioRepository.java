@@ -1,21 +1,8 @@
 package com.example.demo.repository;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.example.demo.model.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.*;
-
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
-@Data
-public class UsuarioRepository {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long rfID;
-    private String username;
-    private String password;
+public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
+    Usuario findByUsername(String username);
 }
