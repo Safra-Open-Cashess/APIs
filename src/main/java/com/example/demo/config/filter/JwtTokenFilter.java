@@ -1,7 +1,8 @@
-package com.example.demo.filter;
+package com.example.demo.config.filter;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.demo.exception.ValidationException;
 import com.example.demo.service.JwtTokenService;
 import com.example.demo.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.ValidationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,11 +47,11 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         try {
-            String token = getToken(request);
-            DecodedJWT decodedJWT = jwtTokenService.validateJwtToken(token);
-            setAuhenticationContext(request, decodedJWT);
+//            String token = getToken(request);
+//            DecodedJWT decodedJWT = jwtTokenService.validateJwtToken(token);
+//            setAuhenticationContext(request, decodedJWT);
             chain.doFilter(request, response);
-        } catch (ValidationException | JWTVerificationException e) {
+        } catch (/*ValidationException | JWTVerificationException*/Exception e) {
             setResponseError(response, e.getMessage(), HttpServletResponse.SC_UNAUTHORIZED);
         }
     }

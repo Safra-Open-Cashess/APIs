@@ -1,6 +1,6 @@
-package la.foton.msf.auth.exception;
+package com.example.demo.exception;
 
-import la.foton.msf.auth.enums.ValidationErrorsEnum;
+import com.example.demo.enums.ValidationErrorsEnum;
 
 /**
  * Exceção para erros de validação de token.

@@ -1,4 +1,4 @@
-package la.foton.msf.auth.enums;
+package com.example.demo.enums;
 
 /**
  * Enum de erros para a exceção de validação.

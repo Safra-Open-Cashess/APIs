@@ -1,34 +1,34 @@
-package la.foton.msf.auth.service;
-
-import static la.foton.msf.auth.util.JwtTokenUtil.clearToken;
-
-import java.net.InetAddress;
-import java.security.KeyFactory;
-import java.security.interfaces.RSAPublicKey;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.Date;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
+package com.example.demo.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.security.KeyFactory;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+import java.util.Date;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import static com.example.demo.util.JwtTokenUtil.clearToken;
 
 /**
  * Serviço de validação de token.
  *
- * @author Vitor Sulzbach, Caio Riserio
+ * @author Vitor Sulzbach
  */
 @Component
 public class JwtTokenService {
@@ -36,12 +36,16 @@ public class JwtTokenService {
     private final Algorithm algorithm;
     private final String host = InetAddress.getLocalHost().getHostAddress();
     private final JWTVerifier verifier;
-
-    public JwtTokenService(@Value("${authorization.jwt.publicKey}") String publicKeyString) throws Exception {
+    public JwtTokenService(
+            @Value("${authorization.jwt.publicKey}") String publicKeyString,
+            @Value("${authorization.jwt.privatekey}") String privateKeyString
+    ) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         RSAPublicKey publicKey = (RSAPublicKey) keyFactory.generatePublic(new X509EncodedKeySpec(Base64
                 .getDecoder().decode(publicKeyString)));
-        algorithm = Algorithm.RSA256(publicKey, null);
+        PKCS8EncodedKeySpec keySpecPKCS8 = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(privateKeyString));
+        RSAPrivateKey privateKey = (RSAPrivateKey)keyFactory.generatePrivate(keySpecPKCS8);
+        algorithm = Algorithm.RSA256(publicKey, privateKey);
         verifier = JWT.require(algorithm).withIssuer(host).build();
     }
 

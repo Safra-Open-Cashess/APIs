@@ -1,4 +1,4 @@
-package la.foton.msf.auth.util;
+package com.example.demo.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

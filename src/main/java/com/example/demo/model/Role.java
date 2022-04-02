@@ -1,6 +1,9 @@
-package la.foton.wideview.authserver.entity;
+package com.example.demo.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Data
-public class AppRole {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
