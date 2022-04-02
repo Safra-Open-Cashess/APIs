@@ -11,7 +11,6 @@ import com.example.demo.dto.StoreDTO;
 import com.example.demo.service.StoreService;
 
 @RestController
-@RequestMapping("/api/v1")
 public class StoreController
 {
 	@Autowired
