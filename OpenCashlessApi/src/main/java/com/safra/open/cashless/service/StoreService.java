@@ -1,6 +1,7 @@
 package com.safra.open.cashless.service;
 
 import com.safra.open.cashless.dto.UpdateStoreDTO;
+import com.safra.open.cashless.model.Transaction;
 import com.safra.open.cashless.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import com.safra.open.cashless.dto.StoreDTO;
 import com.safra.open.cashless.model.Store;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,6 +36,13 @@ public class StoreService
 		final String cnpj)
 	{
 		return findStoreByCnpj(cnpj);
+	}
+
+	public List<Transaction> getTransactionsByStoreId(
+			final Long id)
+	{
+		final Store store = findStoreById(id);
+		return store.getTransactions();
 	}
 
 	public void updateStore(
