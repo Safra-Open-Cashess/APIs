@@ -108,6 +108,6 @@ docker-compose up
 
 2. Servidor de autenticação/validação JWT pronto para uso, é necessário o consumo do mesmo pelo front.
 
-5. Integração com as APIs da fase 2/3 do open banking.
+5. Integração com as APIs das fases 2/3 do open banking.
 
 3. CI/CD com proteção de dados sensiveis(ex: private key)
