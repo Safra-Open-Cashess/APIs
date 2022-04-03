@@ -48,6 +48,7 @@ A implementar
 
 ## Arquitetura
 
+Esquemático de arquitetura:
 
 ![DIAGRAM](https://github.com/Safra-Open-Cashless/APIs/blob/main/Assets/Arquitetura.png?raw=true)
 
@@ -98,3 +99,15 @@ No mesmo terminal em que o docker estiver rodando pare a aplicação com o CTRL 
 ```shell
 docker-compose up
 ```
+
+## Implementações Futuras (RoadMap)
+
+1. Serviço de filas para transações (Evitando gargalos)
+
+4. Configuração automatica do banco de dados
+
+2. Servidor de autenticação/validação JWT pronto para uso, é necessário o consumo do mesmo pelo front.
+
+5. Integração com as APIs da fase 2/3 do open banking.
+
+3. CI/CD com proteção de dados sensiveis(ex: private key)
