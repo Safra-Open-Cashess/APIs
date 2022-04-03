@@ -9,7 +9,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableDiscoveryClient
 @ComponentScan({ "com.safra.open.cashless" })
 @EntityScan(basePackages = { "com.safra.open.cashless" })
 @EnableJpaRepositories(basePackages = { "com.safra.open.cashless" })
