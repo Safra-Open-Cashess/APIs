@@ -46,6 +46,11 @@ A implementar
 Gateway:
 A implementar
 
+## Arquitetura
+
+
+![DIAGRAM](https://github.com/Safra-Open-Cashless/APIs/blob/main/Assets/Arquitetura.png?raw=true)
+
 ## Configuração
 
 1. Pré-requisitos
@@ -78,4 +83,18 @@ docker-compose up
 
 4. Adicionar banco de dados 
 
-![DIAGRAM](https://github.com/Safra-Open-Cashless/App/blob/main/Assets/github-app.png?raw=true)
+A aplicação Open Cashless API não ira subit corretamente pois o banco de dados não está configurado, antes de parar a execução execute os passo abaixo.
+
+Conectar ao PosgreSQL pelo PGAdmin em http://localhost:16543/ conforme a imagem.
+
+![DIAGRAM](https://github.com/Safra-Open-Cashless/APIs/blob/main/Assets/server-register.png?raw=true)
+
+Adicionar banco de dados safra-open-cashless.
+
+5. Subir Subir novamente a aplicação.
+
+No mesmo terminal em que o docker estiver rodando pare a aplicação com o CTRL + C e execute novamente o projeto.
+
+```shell
+docker-compose up
+```
