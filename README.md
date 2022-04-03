@@ -1,1 +1,81 @@
-# APIs
+![LOGO](https://github.com/Safra-Open-Cashless/App/blob/main/Assets/github-app.png?raw=true)
+
+# Backend Safra Open Cashless
+Arranjo de APIs/estruturas do backend do sistema Safra Open Cashless
+
+## Motivação
+Aplicações desenvolvidas para o **Hackathon 2022 do Banco Safra** (Time 3)
+
+## Tecnologias
+
+### [Spring Boot](https://spring.io/projects/spring-boot)
+Framework Java open source que tem como objetivo facilitar o processo de criação de aplicações Java WEB.
+
+### [Spring cloud gateway](https://cloud.spring.io/spring-cloud-gateway/reference/html/)
+Gateway contruido em cima do ecosistema spring, que pode ser facilmente integrado com outros sistemas de load balancer/circuibraker.
+
+### [Spring Cloud Netflix Eureka](https://spring.io/projects/spring-cloud-netflix)
+Service Registry e Load balancer feito pela netflix, neste projeto é utilizado sua versão modificada para spring.
+
+### [PostgreSQL](https://www.postgresql.org/)
+Banco de dados relacional de alta performace e escalabilidade.
+
+### [PGAdmin](https://www.pgadmin.org/)
+Ferramenta oficial para administração do banco de dados PostgreSQL
+
+### [Docker](https://www.docker.com/)
+Ferramenta de virtualização de containers e redes, fornece segurança e simplicidade de build/deploy.
+
+### [RabbitMQ](https://www.docker.com/)
+[Não implementado mas previsto no roadmap] Serviço de mensageria/filas que permite a escalabilidade de aplicações.
+
+### [AWS EC2](https://www.docker.com/)
+Instância Linux em núvem que permite uma rápida configuração de servidores.
+
+## Ambiente
+
+PGAdmin:
+http://ec2-54-165-208-25.compute-1.amazonaws.com:16543/
+
+Aplicação:
+http://ec2-54-165-208-25.compute-1.amazonaws.com:8080/
+
+Swagger:
+A implementar
+
+Gateway:
+A implementar
+
+## Configuração
+
+1. Pré-requisitos
+
+Para execução local do projeto é necessário possuir configurado versões atuais das seguinte tecnologias:
+* Docker
+* Docker-Compose
+* Java 11
+* Maven vinculado ao Java 11
+
+2. Build Gateway, ServiceRegistry e OpenCashlessApi
+
+```shell
+cd Gateway
+mvn clean package install
+cd ..
+cd ServiceRegistry
+mvn clean package install
+cd ..
+cd OpenCashlessApi
+mvn clean package install
+cd ..
+```
+
+3. Subir o orquestramento de containers.
+
+```shell
+docker-compose up
+```
+
+4. Adicionar banco de dados 
+
+![DIAGRAM](https://github.com/Safra-Open-Cashless/App/blob/main/Assets/github-app.png?raw=true)
