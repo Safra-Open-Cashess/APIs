@@ -10,7 +10,7 @@ public class GatewayService {
 
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder routeLocatorBuilder) {
-        routeLocatorBuilder.routes().build();
+        return routeLocatorBuilder.routes().build();
     }
 
 }
