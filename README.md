@@ -40,12 +40,6 @@ http://ec2-54-165-208-25.compute-1.amazonaws.com:16543/
 Aplicação:
 http://ec2-54-165-208-25.compute-1.amazonaws.com:8080/
 
-Swagger:
-A implementar
-
-Gateway:
-A implementar
-
 ## Arquitetura
 
 Esquemático de arquitetura:
