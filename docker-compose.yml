@@ -27,7 +27,7 @@ services:
   cashless-api:
     image: 'docker-spring-boot-postgres:latest'
     build:
-      context: .
+      context: ./OpenCashlessApi
     container_name: cashless-api
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/safra-open-cashless
