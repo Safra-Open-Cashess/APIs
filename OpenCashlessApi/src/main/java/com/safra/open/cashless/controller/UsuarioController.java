@@ -13,7 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-//import static com.example.demo.enums.RolesEnum.ADMIN;
+//import static com.safra.open.cashless.enums.RolesEnum.ADMIN;
 
 @RestController
 @RequestMapping("/usuario")

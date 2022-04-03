@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 
 import static com.safra.open.cashless.util.JwtTokenUtil.clearToken;
 
+
 /**
  * Serviço de validação de token.
  *
