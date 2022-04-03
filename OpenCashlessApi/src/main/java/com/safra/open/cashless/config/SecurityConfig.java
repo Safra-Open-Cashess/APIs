@@ -1,7 +1,7 @@
 package com.safra.open.cashless.config;
 
-import com.safra.open.cashless.config.filter.CorsFilter;
 import com.safra.open.cashless.config.filter.JwtTokenFilter;
+import com.safra.open.cashless.config.filter.WebMvcConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenFilter jwtTokenFilter;
-    private final CorsFilter corsFilter;
+    private final WebMvcConfig corsFilter;
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -36,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeHttpRequests().anyRequest().permitAll();
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
-        http.addFilterBefore(corsFilter, ChannelProcessingFilter.class);
     }
 
     @Bean
