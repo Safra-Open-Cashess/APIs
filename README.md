@@ -1,4 +1,4 @@
-![LOGO](https://github.com/Safra-Open-Cashless/App/blob/main/Assets/github-app.png?raw=true)
+![LOGO](https://github.com/Safra-Open-Cashless/APIs/blob/main/Assets/banner.png?raw=true)
 
 # Backend Safra Open Cashless
 Arranjo de APIs/estruturas do backend do sistema Safra Open Cashless
