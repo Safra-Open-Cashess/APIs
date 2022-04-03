@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class Usuario {
 
     public Usuario(UsuarioDTO usuarioDTO){
         rfID = usuarioDTO.getRfID();
-        username = usuarioDTO.getRfID();
+        username = usuarioDTO.getUsername();
         password = usuarioDTO.getPassword();
     }
 
@@ -27,4 +28,8 @@ public class Usuario {
     private String password;
     @ManyToMany(fetch=FetchType.EAGER)
     private Collection<Role> roles=new ArrayList<>();
+    private Double balance;
+    @OneToMany
+    @JoinColumn(name="userId")
+    private List<Transaction> transactions;
 }

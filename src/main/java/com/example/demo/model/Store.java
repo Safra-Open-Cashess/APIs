@@ -1,11 +1,10 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,11 +14,13 @@ import lombok.*;
 @Builder
 public class Store
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String cnpj;
 	private String nomeFantasia;
 	private String razaoSocial;
-	private Boolean ativo;
+	private Boolean active;
+	@OneToMany
+	@JoinColumn(name = "storeId")
+	private List<Transaction> transactions;
 }
