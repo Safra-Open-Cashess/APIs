@@ -8,6 +8,7 @@ import com.example.demo.dto.StoreDTO;
 import com.example.demo.model.Store;
 import com.example.demo.repository.StoreRepository;
 
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -23,7 +24,8 @@ public class StoreService
 				.cnpj(storeDTO.getCnpj())
 				.nomeFantasia(storeDTO.getNomeFantasia())
 				.razaoSocial(storeDTO.getRazaoSocial())
-				.ativo(Boolean.TRUE)
+				.active(Boolean.TRUE)
+				.transactions(Collections.emptyList())
 				.build();
 		storeRepository.save(store);
 	}
@@ -44,7 +46,7 @@ public class StoreService
 				.cnpj(store.getCnpj())
 				.nomeFantasia(updatedStoreDTO.getNomeFantasia())
 				.razaoSocial(updatedStoreDTO.getRazaoSocial())
-				.ativo(store.getAtivo())
+				.active(store.getActive())
 				.build();
 		storeRepository.save(updatedStore);
 	}
@@ -58,7 +60,7 @@ public class StoreService
 				.cnpj(recoveredStore.getCnpj())
 				.razaoSocial(recoveredStore.getRazaoSocial())
 				.nomeFantasia(recoveredStore.getNomeFantasia())
-				.ativo(Boolean.FALSE)
+				.active(Boolean.FALSE)
 				.build();
 		storeRepository.save(store);
 	}
@@ -73,7 +75,7 @@ public class StoreService
 	private Store findStoreByCnpj(
 		final String cnpj)
 	{
-		final Optional<Store> oStore = storeRepository.findByCnpjEqualsAndAtivoEquals(cnpj, Boolean.TRUE);
+		final Optional<Store> oStore = storeRepository.findByCnpjEqualsAndActiveEquals(cnpj, Boolean.TRUE);
 		return extractStore(oStore);
 	}
 

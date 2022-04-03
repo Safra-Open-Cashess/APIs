@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface StoreRepository
 	extends JpaRepository<Store, Long>
 {
-	Optional<Store> findByCnpjEqualsAndAtivoEquals(String cnpj, Boolean ativo);
+	Optional<Store> findByCnpjEqualsAndActiveEquals(String cnpj, Boolean active);
 }
