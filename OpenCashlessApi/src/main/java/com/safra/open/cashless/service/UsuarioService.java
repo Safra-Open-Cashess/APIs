@@ -2,6 +2,7 @@ package com.safra.open.cashless.service;
 
 import com.safra.open.cashless.dto.UsuarioDTO;
 import com.safra.open.cashless.model.Role;
+import com.safra.open.cashless.model.Transaction;
 import com.safra.open.cashless.model.Usuario;
 import com.safra.open.cashless.repository.RoleRepository;
 import com.safra.open.cashless.repository.UsuarioRepository;
@@ -66,5 +67,8 @@ public class UsuarioService implements UserDetailsService {
         return usuarioRepository.findAll();
     }
 
-
+    public List<Transaction> getTransactionsByUserId(String username) {
+        Usuario usuario = getUser(username);
+        return usuario.getTransactions();
+    }
 }

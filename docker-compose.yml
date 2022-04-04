@@ -46,32 +46,44 @@ services:
     networks:
       - cashless-network
 
-  gateway:
-    image: openjdk:11
-    build:
-      context: ./Gateway
-    container_name: gateway
-    links:
-      - "service-registry:sr"
-    ports:
-      - "8081:8761"
-    depends_on:
-      - postgres
-      - service-registry
-    networks:
-      - cashless-network
-
-  service-registry:
-    image: openjdk:11
-    build:
-      context: ./ServiceRegistry
-    container_name: service-registry
-    ports:
-      - "8761:8761"
-    depends_on:
-      - postgres
-    networks:
-      - cashless-network
+#  gateway:
+#    image: 'docker-spring-boot-postgres:latest'
+#    build:
+#      context: ./Gateway
+#    container_name: gateway
+#    links:
+#      - "service-registry:sr"
+#    ports:
+#      - "8081:8081"
+#    depends_on:
+#      - postgres
+#      - service-registry
+#    networks:
+#      - cashless-network
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/safra-open-cashless
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=admin
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+#      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+#
+#  service-registry:
+#    image: 'docker-spring-boot-postgres:latest'
+#    build:
+#      context: ./ServiceRegistry
+#    container_name: service-registry
+#    ports:
+#      - "8761:8761"
+#    depends_on:
+#      - postgres
+#    networks:
+#      - cashless-network
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/safra-open-cashless
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=admin
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+#      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
 
 networks:
   cashless-network:
